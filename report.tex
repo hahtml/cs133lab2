@@ -1,0 +1,37 @@
+\documentclass{article}
+\title{CS 133 Lab 2}
+\author{Maolei Tang}
+\date{April 2016}
+
+\begin{document}
+\maketitle
+\section*{Experimental result}
+block size:\\
+16:  14.86Gflops\\
+32:  14.11Gflops\\
+64:  16.87Gflops\\
+\\
+processors:\\
+4: 9.78Gflops\\
+8: 12.97Gflops\\
+16: 16.46Gflops\\
+32: 20.15Gflops\\
+
+\section*{Data partition}
+I seperate matrix A by $n/number of processes$ and use scatter to send A to each of the processes. Then I send whole matrix B to each processes with broadcast method. Therefore, each process will execute several row times a whole matix. \\
+ 
+ 
+\section*{Difference between Blocked version and Non-blocked version}
+Because the version of complier, there is no unblocked version for the scatter and broadcast.\\
+
+\section*{Scalability}
+np 4: 4.69\\
+np 8: 8.72\\
+np 16: 14.56\\
+np 32: 20.32\\
+I get linear speedup as the number of processors increases.\\
+
+\section*{Comparing to OpenMP}
+Although these two kinds of method are totally different, the performance between them are similar. I roughly get same improvement on these two methods. However, the method with MPI is a little bit difficult to implement.\\
+
+\end{document}
